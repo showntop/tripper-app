@@ -1,16 +1,11 @@
 'use strict';
-import React, { Component } from 'react';
-
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import React, { Component, PropTypes } from 'react';
 
 import { Provider } from "react-redux"
 
 import configureStore from "./store/configureStore"
 
-import MainScreen from "./MainScreen"
+import App from "./containers/App"
 
 class Root extends Component {
 
@@ -27,15 +22,10 @@ class Root extends Component {
         //need to fetch user and env before render the launching view
         return (
             <Provider store={ this.state.store }>
-                <MainScreen/>
+                <App/>
             </Provider>
         );
       }
 }
-
-const styles = StyleSheet.create({
-
-});
-
 
 export default Root;

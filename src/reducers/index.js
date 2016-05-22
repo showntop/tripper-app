@@ -2,10 +2,10 @@
 
 import { combineReducers } from 'redux';
 import config from './config';
+import user from './user';
 // import notifications from './notifications';
 // import maps from './maps';
 // import sessions from './sessions';
-// import user from './user';
 // import schedule from './schedule';
 // import filter from './filter';
 // import navigation from './navigation';
@@ -14,10 +14,10 @@ import config from './config';
 
 const rootReducer = combineReducers({
   config,
+  user,
   // notifications,
   // maps,
   // sessions,
-  // user,
   // schedule,
   // topics,
   // filter,
