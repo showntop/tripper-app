@@ -1,18 +1,24 @@
 'use strict';
+import React from 'react';
 
-import React, {StyleSheet, Dimensions} from 'react-native';
+import {
+  StyleSheet, 
+  Dimensions, 
+  Text
+} from 'react-native';
+
 import SunColors from './SunColors';
 
-export function Text({style, ...props}: Object): ReactElement {
-  return <React.Text style={[styles.font, style]} {...props} />;
+export function SunText({style, ...props}: Object) {
+  return <Text style={[styles.font, style]} {...props} />;
 }
 
-export function Heading1({style, ...props}: Object): ReactElement {
-  return <React.Text style={[styles.font, styles.h1, style]} {...props} />;
+export function Heading1({style, ...props}: Object) {
+  return <Text style={[styles.font, styles.h1, style]} {...props} />;
 }
 
-export function Paragraph({style, ...props}: Object): ReactElement {
-  return <React.Text style={[styles.font, styles.p, style]} {...props} />;
+export function Paragraph({style, ...props}: Object) {
+  return <Text style={[styles.font, styles.p, style]} {...props} />;
 }
 
 const scale = Dimensions.get('window').width / 375;

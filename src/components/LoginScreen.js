@@ -9,10 +9,12 @@ import {
   StatusBar,
   Dimensions,
   Modal,
+  Image,
   TouchableOpacity
 } from 'react-native';
 
 import Video from 'react-native-video';
+import SunButton from '../components/common/SunButton';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {login} from '../actions/login';
@@ -43,33 +45,36 @@ class LoginScreen extends Component {
     transition('opacity', {duration: 200, begin: 1, end: 0});
   }
 
+  openModal(){
+    this.setState({modalVisible: visible});
+  }
+
     render() {
       return (
-        <View style={styles.container}>
+        <View style={{flex: 1}}>
             <StatusBar
-              backgroundColor="#FFB90F"
+              backgroundColor="#3C8C96"
               barStyle="default"
             />
-
-          <Video source={{uri: "scene2"}}
+          {/*our logo*/}
+          <Video source={{uri: "scenelogin"}}
                  style={styles.backgroundVideo}
                  rate={1} volume={1} muted={true}
-                 resizeMode="cover" repeat={true} key="scene2" />
+                 resizeMode="cover" repeat={true} key="scenelogin" />
+          <View style={{'flexDirection': 'row', alignItems: 'flex-start', justifyContent: 'center'}}>
+              <Image
+                style={{marginTop: 40}}
+                source={require('../images/logo.png')}
+              />
+            </View>
 
-          <View style={styles.loginContainer}>
-            <TouchableOpacity onPress={this.login.bind(this)}>
-              <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-                <Text style={styles.buttonText}>
-                  登录
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
 
           <View style={styles.footer}>
+            <SunButton caption="注册" onPress={this.openModal.bind(this, true)} />
+
             <TouchableOpacity onPress={this.openModal} style={styles.aboutButton}>
               <Text style={styles.aboutButtonText}>
-                About this project
+                在正确的地方做正确的事
               </Text>
             </TouchableOpacity>
           </View>
@@ -92,11 +97,6 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
-  linearGradient: {
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5,
-  },
   backgroundOverlay: {
     opacity: 0.5,
     backgroundColor: '#ffffff',
@@ -113,9 +113,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
-  loginContainer: {
-    backgroundColor: 'transparent',
-  },
+
   buttonText: {
     fontSize: 20,
     fontFamily: 'Gill Sans',
@@ -124,6 +122,7 @@ const styles = StyleSheet.create({
     margin: 10,
     opacity: 0.8,
   },
+
   aboutButtonText: {
     fontSize: 18,
     fontFamily: 'Gill Sans',
@@ -132,43 +131,22 @@ const styles = StyleSheet.create({
     color: '#efefef',
     opacity: 0.8,
   },
-  contentContainer: {
-    position: 'absolute',
+
+
+
+  footer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    backgroundColor: 'transparent',
-  },
-  profilePicture: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    alignItems: 'center',
-    alignSelf: 'center',
-  },
-  name: {
-    fontSize: 20,
-    color: '#000000',
-    fontWeight: 'bold',
-    backgroundColor: 'transparent',
-    marginTop: 15,
-    alignSelf: 'center',
-  },
-  footer: {
     position: 'absolute',
     bottom: 10,
     backgroundColor: 'transparent',
     left: 0,
     right: 0,
   },
-  aboutTitle: {
-    fontSize: 20,
-    marginBottom: 10,
-  },
+
+  longRectButton: {
+    width: 200
+  }
 });
 
 

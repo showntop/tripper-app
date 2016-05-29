@@ -1,11 +1,12 @@
 'use strict';
 
+import React from 'react';
+
 import SunColors from './SunColors';
 import Image from 'Image';
 import LinearGradient from 'react-native-linear-gradient';
-import React from 'React';
 import StyleSheet from 'StyleSheet';
-import { Text } from './SunText';
+import { SunText } from './SunText';
 import TouchableOpacity from 'TouchableOpacity';
 import View from 'View';
 
@@ -29,12 +30,12 @@ class SunButton extends React.Component {
       content = (
         <LinearGradient
           start={[0.5, 1]} end={[1, 1]}
-          colors={['#6A6AD5', '#6F86D9']}
+          colors={['#000000', '#6F86D9']}
           style={[styles.button, styles.primaryButton]}>
           {icon}
-          <Text style={[styles.caption, styles.primaryCaption]}>
+          <SunText style={[styles.caption, styles.primaryCaption]}>
             {caption}
-          </Text>
+          </SunText>
         </LinearGradient>
       );
     } else {
@@ -42,9 +43,9 @@ class SunButton extends React.Component {
       content = (
         <View style={[styles.button, border]}>
           {icon}
-          <Text style={[styles.caption, styles.secondaryCaption]}>
+          <SunText style={[styles.caption, styles.secondaryCaption]}>
             {caption}
-          </Text>
+          </SunText>
         </View>
       );
     }
