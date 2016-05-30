@@ -30,7 +30,7 @@ class SunButton extends React.Component {
       content = (
         <LinearGradient
           start={[0.5, 1]} end={[1, 1]}
-          colors={['#000000', '#6F86D9']}
+          colors={['#FFF8DC', '#FFF8DC']}
           style={[styles.button, styles.primaryButton]}>
           {icon}
           <SunText style={[styles.caption, styles.primaryCaption]}>

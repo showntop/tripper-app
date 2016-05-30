@@ -12,7 +12,6 @@ import LoginScreen from '../components/LoginScreen';
 
 function mapStateToProps(state) {
   const {user} = state;
-  debugger;
   return {
     user
   };

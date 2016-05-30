@@ -10,12 +10,14 @@ import {
   Dimensions,
   Modal,
   Image,
+  TextInput,
   TouchableOpacity
 } from 'react-native';
 
 import Video from 'react-native-video';
 import SunButton from '../components/common/SunButton';
 import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {login} from '../actions/login';
 
@@ -26,8 +28,8 @@ class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
-  
-    this.state = {isModalOpen: false};
+
+    this.state = {modalVisible: false};
   }
 
  login() {
@@ -45,7 +47,8 @@ class LoginScreen extends Component {
     transition('opacity', {duration: 200, begin: 1, end: 0});
   }
 
-  openModal(){
+  openModal(visible){
+    debugger
     this.setState({modalVisible: visible});
   }
 
@@ -62,21 +65,85 @@ class LoginScreen extends Component {
                  rate={1} volume={1} muted={true}
                  resizeMode="cover" repeat={true} key="scenelogin" />
           <View style={{'flexDirection': 'row', alignItems: 'flex-start', justifyContent: 'center'}}>
-              <Image
-                style={{marginTop: 40}}
-                source={require('../images/logo.png')}
-              />
-            </View>
+            <Image
+              style={{marginTop: 40}}
+              source={require('../images/logo.png')}
+            />
+          </View>
 
-
-          <View style={styles.footer}>
-            <SunButton caption="注册" onPress={this.openModal.bind(this, true)} />
-
+          <View>
             <TouchableOpacity onPress={this.openModal} style={styles.aboutButton}>
-              <Text style={styles.aboutButtonText}>
+              <Text style={{textAlign: 'center', color: 'white'}}>
+                和对的人说对的话
+              </Text>
+              <Text style={{textAlign: 'center', color: 'white'}}>
                 在正确的地方做正确的事
               </Text>
+
             </TouchableOpacity>
+          </View>
+
+          <View style={{marginTop:40, paddingHorizontal: 20}}>
+              <View style={{borderBottomColor: '#E0E0E0', borderBottomWidth: 1}}>
+                  <TextInput
+                      style={{height: 37, paddingHorizontal: 5, paddingVertical: 5}}
+                      autoCapitalize = "none"
+                      autoCorrect={false}
+                      keyboardType = "default"
+                      ref='textInput'
+                      placeholder = "请输入手机号或邮箱"
+                      placeholderTextColor = "#999"
+                      onFocus={() => {this.refs.textInput.focus()}}
+                  >
+                  </TextInput>
+              </View>
+              <View style={{borderBottomColor: '#E0E0E0', borderBottomWidth: 1}}>
+                  <TextInput
+                      style={{height: 37, paddingHorizontal: 5, paddingVertical: 5}}
+                      autoCapitalize = "none"
+                      autoCorrect={false}
+                      keyboardType = "default"
+                      ref='textInput'
+                      placeholder = "请输入密码"
+                      placeholderTextColor = "#999"
+                      onFocus={() => {this.refs.textInput.focus()}}
+                  >
+                  </TextInput>
+              </View>          
+              </View>
+
+          <View style={{paddingHorizontal: 20, paddingVertical: 10}}>
+            <TouchableOpacity>
+                <View style={{backgroundColor: '#FFF8DC', borderRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5, height: 45, opacity: 0.5}} >
+                  <Text style={{textAlign: 'center', lineHeight: 27, opacity: 1}}>注册</Text>
+                </View>
+            </TouchableOpacity>
+
+            <View style={{flexDirection: 'row', marginTop: 10, justifyContent: 'space-around'}}>
+            
+              <TouchableOpacity style={{}} activeOpacity={0.1}>
+                  <Icon name='weixin' size={25} style={{color: 'white'}}/>
+              </TouchableOpacity> 
+              <TouchableOpacity style={{}} activeOpacity={0.1}>
+                  <Icon name='qq' size={25} style={{color: 'white'}}/>
+              </TouchableOpacity> 
+              <TouchableOpacity style={{}} activeOpacity={0.1}>
+                  <Icon name='weibo' size={25} style={{color: 'white'}}/>
+              </TouchableOpacity> 
+              <TouchableOpacity style={{}} activeOpacity={0.1}>
+                  <Icon name='facebook' size={25} style={{color: 'white'}}/>
+              </TouchableOpacity> 
+              <TouchableOpacity style={{}} activeOpacity={0.1}>
+                  <Icon name='twitter' size={25} style={{color: 'white'}}/>
+              </TouchableOpacity> 
+            </View>
+
+              <View style={{marginTop: 10}}>
+                <TouchableOpacity style={{flex: 1}}>
+                    <Text style={{ textDecorationLine: "underline", textAlign: 'center'}}>已有账号，直接登录</Text>
+                </TouchableOpacity>
+              </View>
+
           </View>
         </View>
       );
@@ -146,7 +213,22 @@ const styles = StyleSheet.create({
 
   longRectButton: {
     width: 200
-  }
+  },
+
+  line5:{
+          flexDirection: 'column',
+          flex:1,
+          height: 38,
+          borderBottomColor:'#E0E0E0',
+          borderBottomWidth:1,
+      },
+      telTextInput:{
+          height:37,
+          fontSize: 12,
+          color:'#aaa',
+          paddingHorizontal:15,
+          paddingVertical:6,
+      }
 });
 
 
