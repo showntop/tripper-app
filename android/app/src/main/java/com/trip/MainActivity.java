@@ -1,6 +1,7 @@
 package com.trip;
 
 import com.facebook.react.ReactActivity;
+import com.react.rnspinkit.RNSpinkitPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -38,6 +39,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
 	    new MainReactPackage(),
+            new RNSpinkitPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
             new LinearGradientPackage()

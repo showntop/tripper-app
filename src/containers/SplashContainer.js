@@ -40,7 +40,7 @@ class SplashContainer extends React.Component {
                   }); 
              }
         });
-      }, 2500);
+      }, 5);
   }
 
   render () {

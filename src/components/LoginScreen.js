@@ -18,23 +18,26 @@ import Video from 'react-native-video';
 import SunButton from '../components/common/SunButton';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Spinner from 'react-native-spinkit';
 
-import {login} from '../actions/login';
+import {login, signup} from '../actions/user';
 
 var DeviceHeight = Dimensions.get('window').height;
 
 class LoginScreen extends Component {
-  mixins: [Modal.Mixin]
 
   constructor(props) {
     super(props);
-
-    this.state = {modalVisible: false};
   }
 
  login() {
     const {dispatch} = this.props;
     dispatch(login('',''));
+  }
+
+  signup(){
+    const {dispatch} = this.props;
+    dispatch(signup())
   }
 
   showModalTransition(transition) {
@@ -48,9 +51,31 @@ class LoginScreen extends Component {
   }
 
   openModal(visible){
-    debugger
     this.setState({modalVisible: visible});
   }
+
+    openRegistView(){
+
+    }
+
+    renderContent(){
+      if (this.props.user.isSignuping) {
+        return (
+          <TouchableOpacity>
+              <View style={{backgroundColor: '#FFF8DC', borderRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5, height: 45, opacity: 0.5, justifyContent: 'center', alignItems: 'center'}} >
+               <Spinner style={{}} isVisible={true} size={25} type={'Wave'} color={'#'+Math.floor(Math.random()*16777215).toString(16)}/>
+              </View>
+          </TouchableOpacity>
+          )
+      } else {
+        return (<TouchableOpacity onPress={this.signup.bind(this)}>
+            <View style={{backgroundColor: '#FFF8DC', borderRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5, height: 45, opacity: 0.5}} >
+              <Text style={{textAlign: 'center', lineHeight: 27, opacity: 1}}>注册</Text>
+            </View>
+        </TouchableOpacity>
+        )
+      }
+    }
 
     render() {
       return (
@@ -110,16 +135,12 @@ class LoginScreen extends Component {
                   >
                   </TextInput>
               </View>          
-              </View>
+            </View>
 
-          <View style={{paddingHorizontal: 20, paddingVertical: 10}}>
-            <TouchableOpacity>
-                <View style={{backgroundColor: '#FFF8DC', borderRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5, height: 45, opacity: 0.5}} >
-                  <Text style={{textAlign: 'center', lineHeight: 27, opacity: 1}}>注册</Text>
-                </View>
-            </TouchableOpacity>
+          <View style={{paddingHorizontal: 20, paddingVertical: 10, marginTop: 30}}>
+            {this.renderContent()}
 
-            <View style={{flexDirection: 'row', marginTop: 10, justifyContent: 'space-around'}}>
+            <View style={{flexDirection: 'row', marginTop: 15, justifyContent: 'space-around'}}>
             
               <TouchableOpacity style={{}} activeOpacity={0.1}>
                   <Icon name='weixin' size={25} style={{color: 'white'}}/>
