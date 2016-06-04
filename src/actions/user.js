@@ -40,19 +40,21 @@ export function signup(username, password) {
         // 这个案例中，我们返回一个等待处理的 promise。
         // 这并不是 redux middleware 所必须的，但这对于我们而言很方便。
 
-        return fetch(`http://localhost:9000/users/signup`,{
+        return fetch(`http://192.168.1.112:9000/users/signup.json`,{
               method: "POST",
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
             }).then(response => {
-            debugger
-            response.json()
-          })
-          .then(json => {
+              return response.json()
+            }, (error)=>{
+                dispatch(receiveSignup(error))
+            }).then(json => {
                 // 可以多次 dispatch！
                 // 这里，使用 API 请求结果来更新应用的 state。
-                debugger
                 dispatch(receiveSignup(json))
-            }
-          )
+            }, error =>{
+                dispatch(receiveSignup(error))
+            })
 
           // 在实际应用中，还需要
           // 捕获网络请求的异常。

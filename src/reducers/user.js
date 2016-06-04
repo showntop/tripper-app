@@ -17,6 +17,7 @@ function user(state: State = initialState, action: Action) {
 
       case types.RECEIVE_SIGNUP:
         return Object.assign({}, state, {
+          isSignuping: false,
           id: action.data,
         });
 

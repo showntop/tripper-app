@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "@remobile/react-native-toast": "^1.0.4",
     "react": "^0.14.8",
     "react-native": "^0.25.1",
     "react-native-action-button": "^1.1.5",

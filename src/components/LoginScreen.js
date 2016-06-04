@@ -28,15 +28,20 @@ class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
+    this.state={
+      username: '',
+      password: '',
+    }
   }
 
  login() {
     const {dispatch} = this.props;
-    dispatch(login('',''));
+    dispatch(login(this.state.username,this.state.password));
   }
 
   signup(){
     const {dispatch} = this.props;
+    debugger
     dispatch(signup())
   }
 
@@ -69,8 +74,8 @@ class LoginScreen extends Component {
           )
       } else {
         return (<TouchableOpacity onPress={this.signup.bind(this)}>
-            <View style={{backgroundColor: '#FFF8DC', borderRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5, height: 45, opacity: 0.5}} >
-              <Text style={{textAlign: 'center', lineHeight: 27, opacity: 1}}>注册</Text>
+            <View style={{backgroundColor: '#FFF8DC', borderRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5, height: 45, opacity: 0.5, alignItems:'center', justifyContent: 'center'}} >
+              <Text style={{textAlign: 'center', opacity: 1}}>注册</Text>
             </View>
         </TouchableOpacity>
         )
@@ -115,10 +120,13 @@ class LoginScreen extends Component {
                       autoCapitalize = "none"
                       autoCorrect={false}
                       keyboardType = "default"
-                      ref='textInput'
+                      ref='textInputEmail'
+                      autoFocus={true}
                       placeholder = "请输入手机号或邮箱"
                       placeholderTextColor = "#999"
-                      onFocus={() => {this.refs.textInput.focus()}}
+                      underlineColorAndroid= "transparent"
+                      onChangeText={(username) => this.setState({username})}
+                      onFocus={() => {this.refs.textInputEmail.focus()}}
                   >
                   </TextInput>
               </View>
@@ -128,10 +136,12 @@ class LoginScreen extends Component {
                       autoCapitalize = "none"
                       autoCorrect={false}
                       keyboardType = "default"
-                      ref='textInput'
+                      ref='textInputPasswod'
                       placeholder = "请输入密码"
                       placeholderTextColor = "#999"
-                      onFocus={() => {this.refs.textInput.focus()}}
+                      underlineColorAndroid= "transparent"
+                      onChangeText={(password) => this.setState({password})}
+                      onFocus={() => {this.refs.textInputPasswod.focus()}}
                   >
                   </TextInput>
               </View>          
