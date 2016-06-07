@@ -3,6 +3,7 @@
 import { combineReducers } from 'redux';
 import config from './config';
 import user from './user';
+import spot from './spot';
 // import notifications from './notifications';
 // import maps from './maps';
 // import sessions from './sessions';
@@ -15,6 +16,7 @@ import user from './user';
 const rootReducer = combineReducers({
   config,
   user,
+  spot,
   // notifications,
   // maps,
   // sessions,

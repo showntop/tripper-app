@@ -3,6 +3,7 @@
 import { 
     REQUEST_SIGNUP, 
     RECEIVE_SIGNUP,
+    ERROR_SIGNUP,
  } from '../constants/ActionTypes';
 
 export function login(login, password) {
@@ -25,6 +26,13 @@ export function receiveSignup(json) {
     }
 }
 
+// export function errorSignup(json) {
+//     return{
+//         type: ERROR_SIGNUP,
+//         data: json,
+//     }
+// }
+
 export function signup(username, password) {
 
     return function (dispatch) {
@@ -39,11 +47,16 @@ export function signup(username, password) {
 
         // 这个案例中，我们返回一个等待处理的 promise。
         // 这并不是 redux middleware 所必须的，但这对于我们而言很方便。
+        let formData = new FormData();
+        formData.append('email', username);
+        formData.append('password', password);
 
-        return fetch(`http://192.168.1.112:9000/users/signup.json`,{
+
+        return fetch(`http://192.168.1.116:9000/users/signup`,{
               method: "POST",
               'Accept': 'application/json',
-              'Content-Type': 'application/json',
+              'Content-Type': 'multipart/form-data; boundary=6ff46e0b6b5148d984f148b6542e5a5d',
+              body: formData,
             }).then(response => {
               return response.json()
             }, (error)=>{

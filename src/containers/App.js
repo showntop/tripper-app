@@ -53,10 +53,12 @@ class App extends React.Component {
   render () {
     return (
       <View style={{flex: 1}}>
-        <StatusBar
-          backgroundColor="#FF0000"
-          barStyle="default"
-        />
+    {        
+      //<StatusBar
+//                   backgroundColor="#F0FFF0"
+//                   barStyle="default"
+//                 />
+         }
         <Navigator
           ref='navigator'
           style={styles.navigator}

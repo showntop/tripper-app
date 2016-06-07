@@ -5,7 +5,9 @@ import * as types from '../constants/ActionTypes';
 const initialState = {
   isSignuping: false,
   isSignedIn: false,
-  id: null,
+  data: null,
+  code: null,
+  message: ""
 };
 
 function user(state: State = initialState, action: Action) {
@@ -18,7 +20,16 @@ function user(state: State = initialState, action: Action) {
       case types.RECEIVE_SIGNUP:
         return Object.assign({}, state, {
           isSignuping: false,
-          id: action.data,
+          data: action.data.data,
+          message: action.data.message,
+          code: action.data.code
+        });      
+
+        case types.ERROR_SIGNUP:
+        return Object.assign({}, state, {
+          isSignuping: false,
+          isSignedIn: false,
+          data: action.data,
         });
 
       default:

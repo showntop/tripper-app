@@ -29,14 +29,11 @@ export default class PenButton extends React.Component {
 
   render() {
     return (
-          <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-            {/*Rest of App come ABOVE the action button component!*/}
             <ActionButton buttonColor="rgba(231,76,60,1)">
               <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={this.openSpotCreator.bind(this)}>
                 <Icon name="ios-add" style={styles.actionButtonIcon} />
               </ActionButton.Item>
             </ActionButton>
-          </View>
         );
   }
 }

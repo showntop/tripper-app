@@ -49,7 +49,7 @@ class CustomTabBar extends React.Component {
     var left = this.props.scrollValue.interpolate({
       inputRange: [0, 1], outputRange: [0,  containerWidth / numberOfTabs]
     });
-    let tabs =['aaa', 'bbb', 'ccc'];
+    let tabs =['全部', '吃货', '心情','运动','清净'];
     return (
       <View key={'xxxxfsdf'} style={[styles.tabs, {backgroundColor: this.props.backgroundColor || null}]}>
         {tabs.map((tab, i) => {
@@ -81,7 +81,7 @@ let styles = StyleSheet.create({
     justifyContent: 'center'
   },
   tabs: {
-    height: 50,
+    height: 30,
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderWidth: 1,

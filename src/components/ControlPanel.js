@@ -10,6 +10,8 @@ import {
   Dimensions,
 } from 'react-native'
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export default class ControlPanel extends Component {
   static propTypes = {
     closeDrawer: PropTypes.func.isRequired
@@ -32,54 +34,64 @@ export default class ControlPanel extends Component {
     }
   }
 
-
-  renderNavigationView() {
-    let {closeDrawer} = this.props
-    return (
-      <ScrollView style={styles.container}>
-        <Text style={styles.controlText}>Control Panel</Text>
-        <TouchableOpacity style={styles.button} onPress={closeDrawer}>
-          <Text>Close Drawer</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    )
-  }
-
   render () {
     return (
-      <View style={[styles.container, {backgroundColor: '#fcfcfc'}]}>
-        <Image
-          style={{width: Dimensions.get('window').width / 5 * 3, height: 120, justifyContent: 'flex-end', paddingBottom: 10}}
-          source={require('../images/reddit_bg.png')}
-        >
-          <Text style={{fontSize: 20, textAlign: 'left', color: '#fcfcfc', marginLeft: 10}}>
-            xReddit
-          </Text>
-        </Image>
-        <TouchableOpacity
-          style={styles.drawerContent}
-          onPress={this.onPressDrawerItem.bind(this, 0)}
-        >
-          <Image
-            style={styles.drawerIcon}
-            source={require('../images/reddit_red.png')}
-          />
-          <Text style={styles.drawerText}>
-            首页
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.drawerContent}
-          onPress={this.onPressDrawerItem.bind(this,2)}
-        >
-          <Image
-            style={styles.drawerIcon}
-            source={require('../images/about.png')}
-          />
-          <Text style={styles.drawerText}>
-            关于
-          </Text>
-        </TouchableOpacity>
+      <View style={{flex: 1}}>
+          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', backgroundColor: '#2B2B2B', padding: 10}}>
+            <Image
+              style={{width: Dimensions.get('window').width / 5, height: 80, borderRadius: 30,justifyContent: 'flex-end', paddingBottom: 10}}
+              source={require('../images/reddit_bg.png')}/>
+              <Text style={{fontSize: 20, textAlign: 'left', color: '#ffffff', marginLeft: 10}}>
+                诗一样的春天
+              </Text>
+          </TouchableOpacity>
+        <View style={{flex: 1, backgroundColor: '#ffffff'}}>
+          <TouchableOpacity
+            style={styles.drawerContent}
+            onPress={this.onPressDrawerItem.bind(this, 0)}>
+              <Icon name="comments"
+                style={styles.drawerIcon}/>
+              <Text style={styles.drawerText}>
+                消息
+              </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.drawerContent}
+            onPress={this.onPressDrawerItem.bind(this, 0)}>
+              <Icon name="bell"
+                style={styles.drawerIcon}/>
+              <Text style={styles.drawerText}>
+                通知
+              </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.drawerContent}
+            onPress={this.onPressDrawerItem.bind(this, 0)}>
+              
+              <Icon name='group' style={styles.drawerIcon}/>
+              <Text style={styles.drawerText}>
+                群组
+              </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.drawerContent}
+            onPress={this.onPressDrawerItem.bind(this,2)}>
+              <Icon name="wrench"
+                style={styles.drawerIcon}/>
+              <Text style={styles.drawerText}>
+                设置
+              </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.drawerContent}
+            onPress={this.onPressDrawerItem.bind(this,2)}>
+              <Icon name="info"
+                style={styles.drawerIcon}/>
+              <Text style={styles.drawerText}>
+                关于
+              </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -87,18 +99,20 @@ export default class ControlPanel extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: 'black',
+  drawerContent: {
+    margin: 10,
+    marginLeft: 20,
+    alignItems: 'center',
+    flexDirection: 'row',
   },
-  controlText: {
-    color: 'white',
+  drawerIcon:{
+    fontSize: 25,
+    width: 30,
+    height: 30,
+    marginLeft: 5
   },
-  button: {
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'black',
-    padding: 10,
-  }
+  drawerText: {
+    marginLeft: 30,
+    color: 'black',
+  },
 })

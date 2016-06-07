@@ -13,9 +13,9 @@ class MainContainer extends React.Component {
 }
 
 function mapStateToProps (state) {
-  const {reddit} = state;
+  const {spot} = state;
   return {
-    reddit
+    spot
   }
 }
 

@@ -19,6 +19,9 @@ import SunButton from '../components/common/SunButton';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Spinner from 'react-native-spinkit';
+import Toast from 'react-native-root-toast';
+
+import MainContainer from '../containers/MainContainer';
 
 import {login, signup} from '../actions/user';
 
@@ -29,8 +32,8 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state={
-      username: '',
-      password: '',
+      username: 'showntop@163.com',
+      password: '1234567890a',
     }
   }
 
@@ -41,8 +44,7 @@ class LoginScreen extends Component {
 
   signup(){
     const {dispatch} = this.props;
-    debugger
-    dispatch(signup())
+    dispatch(signup(this.state.username,this.state.password));
   }
 
   showModalTransition(transition) {
@@ -61,6 +63,39 @@ class LoginScreen extends Component {
 
     openRegistView(){
 
+    }
+
+    componentWillReceiveProps(nextProps) {
+      let {user, navigator} = nextProps;
+      if (user.code != 200) {
+        Toast.show(user.message, {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.BOTTOM,
+            shadow: true,
+            animation: true,
+            hideOnPress: true,
+            delay: 0,
+            onShow: () => {
+                // calls on toast\`s appear animation start
+            },
+            onShown: () => {
+                // calls on toast\`s appear animation end.
+            },
+            onHide: () => {
+                // calls on toast\`s hide animation start.
+            },
+            onHidden: () => {
+                // calls on toast\`s hide animation end.
+            }
+        });
+      } else {
+        //转到主页
+         navigator.replace({
+          component: MainContainer,
+          name: 'Main'
+         }); 
+      }
+      
     }
 
     renderContent(){

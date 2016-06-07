@@ -55,14 +55,14 @@ class NarBar extends React.Component {
     } else {
       return (
         <NavigationBar
-          style={styles.toolbar}
+          style={{flex: 1,backgroundColor: '#8FBC8F', alignItems: 'center'}}
           actions={this.props.actions}
           onActionSelected={this.onActionSelected}
           titleColor='#fff'
           leftButton={
-                <TouchableOpacity onPress={this.onIconClicked} style={{ flexDirection: 'row', }}>
+                <TouchableOpacity onPress={this.onIconClicked} style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 5}}>
                     <Image source={this.props.navIcon ? this.props.navIcon : require('../images/icon_left.png')}/>
-                    <Text>{this.props.title}</Text>
+                    <Text style={{marginLeft: 5}}>{this.props.title}</Text>
                 </TouchableOpacity>
             }
         />
@@ -73,7 +73,7 @@ class NarBar extends React.Component {
 
 let styles = StyleSheet.create({
   toolbar: {
-    backgroundColor: '#FF0000',
+    backgroundColor: '#8FBC8F',
     height: 58
   }
 });
