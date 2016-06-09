@@ -6,6 +6,7 @@ import LoadingView from  '../components/LoadingView';
 import {ToastShort} from '../utils/ToastUtils';
 
 import SplashContainer from '../containers/SplashContainer';
+// import SpotContainer from '../containers/SpotContainer';
 import {NaviGoBack} from '../utils/CommonUtils';
 
 import {

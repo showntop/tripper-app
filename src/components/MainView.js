@@ -6,15 +6,17 @@ import {
   View
   } from 'react-native';
 
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Drawer from 'react-native-drawer'
+
+import SpotContainer from '../containers/SpotContainer';
 
 import CustomTabBar from '../components/CustomTabBar';
 import NavBar from '../components/NavBar';
 import ControlPanel from '../components/ControlPanel'
 import SpotGrid from '../components/SpotGrid'
-import PenButton from '../components/PenButton'
+import ActionButton from '../components/ActionButton'
 
-import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -30,6 +32,15 @@ class MainView extends React.Component {
   onIconClicked () {
     this.refs.drawer.open();
   }
+
+  openSpotCreator() {
+      console.log('open spot creator for add a new spot');
+      const {navigator} = this.props;
+      navigator.push({
+            component: SpotContainer,
+            name: 'SpotCreator'
+          })
+    }
 
   render () {
     const { navigator } = this.props;
@@ -55,7 +66,7 @@ class MainView extends React.Component {
           >
             <SpotGrid {...this.props} style={{flex: 1}}/>
           </ScrollableTabView>
-          <PenButton {...this.props}/>
+          <ActionButton {...this.props} buttonColor="rgba(231,76,60,1)" onPress={this.openSpotCreator.bind(this)}/>
         </View>
       </Drawer>
     );

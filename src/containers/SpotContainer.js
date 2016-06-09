@@ -35,9 +35,9 @@ export class SpotContainer extends React.Component {
   render() {
     return (
         <View style={{flex: 1}}>
-            <StatusBar
-              backgroundColor="#8FBC8F"
-              barStyle="default"/>
+            {/*<StatusBar
+                          backgroundColor="#8FBC8F"
+                          barStyle="default"/>*/}
             <SpotEditor {...this.props} style={{flex: 1}}/>
         </View>);
   }
