@@ -6,6 +6,9 @@ import {
   StyleSheet,
   View,
   ScrollView,
+  Dimensions,
+  RefreshControl,
+  Text,
 } from 'react-native';
 
 import {fetchSpotList} from '../actions/spot';
@@ -19,43 +22,78 @@ class SpotGrid extends Component {
       this.state = {};
     }
 
+    shuffle(o){
+        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+    }
+
     componentDidMount() {
-        const {dispatch} = this.props
-        dispatch(fetchSpotList())
+        this.refreshSpotList();
     }
 
     renderSpots(start, end) {
-        const aas = [1,22,2,2,3,2]
+        // const aas = [1,22,2,2,3,2]
+        const {spot} = this.props;
         const result = [];
 
-        const spotCards = aas.map((spot, index) => {
+        const spotCards = spot.dataList.map((spot, index) => {
+            var heights = [400, 380, 350, 300];
+
+            let randomHeight = Math.floor(Math.random() * (4 - 0));
+            let height = this.shuffle(heights)[randomHeight];
+
           return (
-              <SpotCard key={index}/>
+              <SpotCard key={index} style={{marginTop: 6, height: height}} />
           );
         });
-        debugger
         return spotCards;
     }
 
-  render() {
-    if (this.props.isLoading) {
-        <View>
-        <Text>正在加载中....</Text>
-        </View>
-    } else {
-        return (
-                <View style={styles.wrapper}>
+    renderContent(){
+        if (this.props.spot.isLoading) {
+            return ( 
+             <View>
+                 <Text>正在加载中....</Text>
+             </View>
+             );
+        } else {
+            return (
+                <View style={{flex: 1, flexDirection: 'row'}}>
 
-                    <View style={styles.row}>
-                    {this.renderSpots(0, 0)}
+                    <View style={{width: 700, flex: 1, padding: 5}}>
+                        {this.renderSpots(0, 0)}
                     </View>
 
-                      <View style={[styles.row, {marginRight: 0}]}>
-                      {this.renderSpots(0, 0)}
+                      <View style={{width: 700, flex: 1, padding: 5}}>
+                        {this.renderSpots(0, 0)}
                       </View>
                 </View>
-        );
+            );
+        }
     }
+
+    refreshSpotList() {
+        const {dispatch} = this.props;
+        dispatch(fetchSpotList());
+    }
+
+  render() {
+    return (
+        <ScrollView style={{flex: 1}}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.props.spot.isLoading}
+                onRefresh={this.refreshSpotList.bind(this)}
+                tintColor="#ff0000"
+                title="Loading..."
+                colors={['#ff0000', '#00ff00', '#0000ff']}
+                progressBackgroundColor="#ffff00"
+              />
+            }
+        >
+            {this.renderContent()}
+        </ScrollView>
+    );
   }
 }
 

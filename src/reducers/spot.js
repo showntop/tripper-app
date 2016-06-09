@@ -4,7 +4,7 @@ import * as types from '../constants/ActionTypes';
 
 const initialState = {
   isLoading: false,
-  dataList: null,
+  dataList: [],
   currentData: null,
   code: null,
   message: ""
@@ -14,7 +14,7 @@ function spot(state: State = initialState, action: Action) {
   switch (action.type) {
       case types.FETCH_SPOT_LIST:
         return Object.assign({}, state, {
-          isLoading: action.isLoading,
+          isLoading: action.data.isLoading,
         });
 
       case types.RECEIVE_SPOT_LIST:
