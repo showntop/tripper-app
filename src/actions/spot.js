@@ -42,3 +42,28 @@ function receiveSpotList (spotList, typeId, after) {
     isLoading: false
   }
 }
+
+
+function receiveLocation(data) {
+  return {
+    type: types.RECEIVE_LOCATION,
+    data: data,
+    isLoading: false
+  }
+}
+
+export function fetchLocation(position){
+  return dispatch => {
+    return fetch(`http://restapi.amap.com/v3/geocode/regeo?output=json&location=116.310003,39.991957&key=2e98a619ace93e8fbd01c7fc9ac748a7&radius=1000&extensions=all`).then(response => {
+      return response.json();
+    }, (error)=>{
+        dispatch(receiveLocation(error));
+    }).then(json => {
+        // 可以多次 dispatch！
+        // 这里，使用 API 请求结果来更新应用的 state。
+        dispatch(receiveLocation(json));
+    }, error =>{
+        dispatch(receiveLocation(error));
+    })
+  }
+}

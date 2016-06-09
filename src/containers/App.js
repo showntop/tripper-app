@@ -6,7 +6,7 @@ import LoadingView from  '../components/LoadingView';
 import {ToastShort} from '../utils/ToastUtils';
 
 import SplashContainer from '../containers/SplashContainer';
-// import SpotContainer from '../containers/SpotContainer';
+import SpotContainer from '../containers/SpotContainer';
 import {NaviGoBack} from '../utils/CommonUtils';
 
 import {
@@ -66,7 +66,7 @@ class App extends React.Component {
           configureScene={this.configureScene}
           renderScene={this.renderScene}
           initialRoute={{
-            component: SplashContainer,
+            component: SpotContainer,
             name: 'Splash'
           }}
         />

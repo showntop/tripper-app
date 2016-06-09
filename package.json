@@ -10,6 +10,7 @@
     "react": "^0.14.8",
     "react-native": "^0.25.1",
     "react-native-action-button": "^1.1.5",
+    "react-native-background-geolocation": "^1.0.1",
     "react-native-drawer": "^2.2.2",
     "react-native-lightbox": "^0.6.0",
     "react-native-linear-gradient": "^1.5.7",

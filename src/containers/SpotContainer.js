@@ -13,8 +13,10 @@ import {
 import SpotEditor from '../components/SpotEditor'
 
 function mapStateToProps(state) {
-  return {
 
+  const {location} = state;
+  return {
+    location,
   };
 }
 
