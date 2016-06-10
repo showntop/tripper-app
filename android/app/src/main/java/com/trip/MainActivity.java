@@ -1,6 +1,7 @@
 package com.trip;
 
 import com.facebook.react.ReactActivity;
+import com.imagepicker.ImagePickerPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -39,6 +40,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
 	    new MainReactPackage(),
+            new ImagePickerPackage(),
             new RNSpinkitPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),

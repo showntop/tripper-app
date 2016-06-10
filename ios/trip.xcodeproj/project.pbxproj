@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -35,6 +34,7 @@
 		AE94D5C8D283497B8684709F /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FA7CCD685E54438B7AE4D00 /* MaterialIcons.ttf */; };
 		CC642D231CFC7A4D00690F43 /* scenelogin.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CC642D221CFC7A4D00690F43 /* scenelogin.mp4 */; };
 		EB0BEF6B6F8240799D2CC2BB /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5674ADAA9B474905B8158D0D /* libRNVectorIcons.a */; };
+		4574E081CDC9476A90E39373 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8EEF86FA384D96B6AD7125 /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +184,8 @@
 		E3B54ED769394BBBAA2BBD78 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		EE4984535D2044F0AF7DBE31 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		FEE56593247F4B8C828F27E0 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		EE66B4F0F54F476C8E1B3DB1 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		DC8EEF86FA384D96B6AD7125 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				EB0BEF6B6F8240799D2CC2BB /* libRNVectorIcons.a in Frameworks */,
 				57F2736458CD4C4796A56FCB /* libRCTVideo.a in Frameworks */,
 				6F6D7B237B9740748C0B1915 /* libRNSpinkit.a in Frameworks */,
+				4574E081CDC9476A90E39373 /* libRNImagePicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +357,7 @@
 				BF992C3B23DC4838967AC856 /* RNVectorIcons.xcodeproj */,
 				E3B54ED769394BBBAA2BBD78 /* RCTVideo.xcodeproj */,
 				8A70CF91F0324EDD8B0FCFF3 /* RNSpinkit.xcodeproj */,
+				EE66B4F0F54F476C8E1B3DB1 /* RNImagePicker.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -759,6 +763,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/trip.app/trip";
@@ -783,6 +788,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/trip.app/trip";
@@ -802,6 +808,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-video",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/**",
 				);
 				INFOPLIST_FILE = trip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -822,6 +829,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-video",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/**",
 				);
 				INFOPLIST_FILE = trip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -872,6 +880,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-video",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -916,6 +925,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-video",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

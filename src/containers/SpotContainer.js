@@ -20,8 +20,6 @@ function mapStateToProps(state) {
   };
 }
 
-var title = "";
-
 export class SpotContainer extends React.Component {
   static propTypes = {
     name: React.PropTypes.string,
@@ -29,19 +27,12 @@ export class SpotContainer extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      text: '',
-    };
   }
 
   render() {
     return (
-        <View style={{flex: 1}}>
-            {/*<StatusBar
-                          backgroundColor="#8FBC8F"
-                          barStyle="default"/>*/}
-            <SpotEditor {...this.props} style={{flex: 1}}/>
-        </View>);
+      <SpotEditor {...this.props}/>
+      );
   }
 }
 
