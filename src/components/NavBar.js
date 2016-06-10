@@ -74,7 +74,7 @@ class NarBar extends React.Component {
 let styles = StyleSheet.create({
   toolbar: {
     backgroundColor: '#8FBC8F',
-    height: 58
+    height: 50
   }
 });
 

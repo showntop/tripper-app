@@ -63,7 +63,7 @@ class App extends React.Component {
           configureScene={this.configureScene}
           renderScene={this.renderScene}
           initialRoute={{
-            component: SpotContainer,
+            component: SplashContainer,
             name: 'Splash'
           }}
         />
