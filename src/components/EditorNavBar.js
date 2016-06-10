@@ -9,7 +9,7 @@ import {
   View
   } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import NavigationBar from 'react-native-navbar';
 
 export default class EditorToolBar extends React.Component {
@@ -37,12 +37,12 @@ export default class EditorToolBar extends React.Component {
               }
               leftButton={  
                 <TouchableOpacity style={styles.toolItem} activeOpacity={0.1} onPress ={this.navtoLast.bind(this)}>
-                  <Icon name='arrow-left' size={25} />
+                  <Icon name='arrow-back' size={28} style={{color: 'white'}} />
                 </TouchableOpacity>
               } 
               rightButton={
                 <TouchableOpacity style={styles.toolItem} activeOpacity={0.1} onPress ={() => this.tabColor(1)}>
-                    <Icon name='check' size={25} />
+                    <Icon name='check' size={28} style={{color: 'white'}} />
                 </TouchableOpacity>
               }
       />
@@ -56,13 +56,11 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 38,
+    height: 50,
     backgroundColor: '#9BCD9B'
   },
   toolItem: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 5,
-    marginRight: 5,
   }
 });
