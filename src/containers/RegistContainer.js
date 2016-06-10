@@ -8,7 +8,7 @@ import {
 
 import MainContainer from '../containers/MainContainer';
 
-import LoginScreen from '../components/LoginScreen';
+import RegistScreen from '../components/RegistScreen';
 
 function mapStateToProps(state) {
   const {user} = state;
@@ -39,7 +39,7 @@ export class LoginContainer extends React.Component {
 
   render() {
     return (
-        <LoginScreen {...this.props}/>
+        <RegistScreen {...this.props}/>
     );
   }
 }

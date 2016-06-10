@@ -14,7 +14,7 @@ import {
 import Video from 'react-native-video';
 
 import MainContainer from '../containers/MainContainer';
-import LoginContainer from '../containers/LoginContainer';
+import RegistContainer from '../containers/RegistContainer';
 
 var {height, width} = Dimensions.get('window');
 
@@ -30,7 +30,7 @@ class SplashContainer extends React.Component {
         InteractionManager.runAfterInteractions(() => {
             if (!user.isSignedIn) {
                 navigator.replace({
-                  component: LoginContainer,
+                  component: RegistContainer,
                   name: 'Login'
                 });
              } else {
