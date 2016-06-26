@@ -16,6 +16,8 @@
     "react-native-lightbox": "^0.6.0",
     "react-native-linear-gradient": "^1.5.7",
     "react-native-navbar": "^1.5.0",
+    "react-native-parallax-scroll-view": "^0.18.2",
+    "react-native-parallax-view": "^2.0.5",
     "react-native-scrollable-tab-view": "^0.4.3",
     "react-native-spinkit": "^0.1.2",
     "react-native-textinput": "0.0.8",

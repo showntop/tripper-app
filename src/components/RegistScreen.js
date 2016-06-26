@@ -21,11 +21,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Spinner from 'react-native-spinkit';
 import Toast from 'react-native-root-toast';
 
+import LoginContainer from '../containers/LoginContainer';
 import MainContainer from '../containers/MainContainer';
 
-import LoginScreen from '../components/LoginScreen';
-
-import {login, signup} from '../actions/user';
+import { signup} from '../actions/user';
 
 var DeviceHeight = Dimensions.get('window').height;
 
@@ -37,11 +36,6 @@ class RegistScreen extends Component {
       username: 'showntop@163.com',
       password: '1234567890a',
     }
-  }
-
- login() {
-    const {dispatch} = this.props;
-    dispatch(login(this.state.username,this.state.password));
   }
 
   signup(){
@@ -101,7 +95,11 @@ class RegistScreen extends Component {
     }
 
     switchtoLogin(){
-      this.refs.loginScreen.setVisible(true);
+        let {navigator} = this.props;
+         navigator.push({
+          component: LoginContainer,
+          name: 'Main'
+         }); 
     }
 
     renderContent(){
@@ -217,7 +215,6 @@ class RegistScreen extends Component {
               </View>
 
           </View>
-          <LoginScreen ref="loginScreen"/>
         </View>
       );
     }

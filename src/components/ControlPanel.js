@@ -12,6 +12,8 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import UserContainer from '../containers/UserContainer';
+
 export default class ControlPanel extends Component {
   static propTypes = {
     closeDrawer: PropTypes.func.isRequired
@@ -34,10 +36,18 @@ export default class ControlPanel extends Component {
     }
   }
 
+  openUser(){
+    const {navigator} = this.props;
+    navigator.push({
+      component: UserContainer,
+      name: 'UserContainer'
+    });
+  }
+
   render () {
     return (
       <View style={{flex: 1}}>
-          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', backgroundColor: '#2B2B2B', padding: 10}}>
+          <TouchableOpacity onPress={this.openUser.bind(this)} style={{flexDirection: 'row', alignItems: 'center', backgroundColor: '#2B2B2B', padding: 10}}>
             <Image
               style={{width: Dimensions.get('window').width / 5, height: 80, borderRadius: 30,justifyContent: 'flex-end', paddingBottom: 10}}
               source={require('../images/reddit_bg.png')}/>

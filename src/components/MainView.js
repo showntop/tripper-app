@@ -48,7 +48,7 @@ class MainView extends React.Component {
       <Drawer
         ref='drawer'
         openDrawerOffset={100}
-        content={<ControlPanel closeDrawer={()=>this.refs.drawer.close()}/>}
+        content={<ControlPanel closeDrawer={()=>this.refs.drawer.close()} {...this.props}/>}
       >
         <View style={{flex: 1}}>
           <NavBar
@@ -60,7 +60,7 @@ class MainView extends React.Component {
           <ScrollableTabView style={{flex: 1}}
             renderTabBar={() => <CustomTabBar />}
             tabBarBackgroundColor="#F0FFF0"
-            tabBarUnderlineColor="#8FBC8F"
+            tabBarUnderlineColor="#69D685"
             tabBarActiveTextColor="#FF0000"
             tabBarInactiveTextColor="#aaaaaa"
           >

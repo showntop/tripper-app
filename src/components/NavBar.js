@@ -55,7 +55,7 @@ class NarBar extends React.Component {
     } else {
       return (
         <NavigationBar
-          style={{flex: 1,backgroundColor: '#8FBC8F', alignItems: 'center'}}
+          style={{flex: 1,backgroundColor: '#69D685', alignItems: 'center'}}
           actions={this.props.actions}
           onActionSelected={this.onActionSelected}
           titleColor='#fff'
@@ -73,7 +73,7 @@ class NarBar extends React.Component {
 
 let styles = StyleSheet.create({
   toolbar: {
-    backgroundColor: '#8FBC8F',
+    backgroundColor: '#69D685',
     height: 50
   }
 });

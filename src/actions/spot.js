@@ -1,6 +1,74 @@
 'use strict';
 
+ import {BASE_URL} from '../constants/Urls'
 import * as types from '../constants/ActionTypes';
+
+export function createSpot(title, description, cover, location) {
+
+  return dispatch => {
+    dispatch(requestHttp());
+    
+    return fetch(BASE_URL+`spots`,{
+      method: "POST",
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      body: JSON.stringify({title: title, description: description}),
+    }).then(response => {
+      return response.json()
+    }, (error)=>{
+        dispatch(receiveSpotList(error));
+    }).then(json => {
+        // 可以多次 dispatch！
+        // 这里，使用 API 请求结果来更新应用的 state。
+        dispatch(receiveSpotList(json));
+    }, error =>{
+        dispatch(receiveSpotList(error));
+    })
+  }
+}
+
+export function requestupdateSpotCover() {
+  return{
+    type: types.REQUEST_CREATE_SPOT_COVER,
+    data:{
+      isLoading: true,
+      data: null
+    }
+  }
+}
+
+export function receiveUpdateSpotCover(data) {
+  return{
+    type: types.REQUEST_CREATE_SPOT_COVER
+    data:{
+      data: data,
+      isLoading: false
+    }
+  }
+}
+
+export function updateSpotCover(id, file) {
+    var formData = new FormData();
+    formData.append('file', {uri: image,  type: 'image/jpeg'});
+  return dispatch => {
+    dispatch(requestupdateSpotCover());
+    return fetch(BASE_URL+`spots`,{
+      method: "POST",
+      'Accept': 'application/json',
+      body: formData,
+    }).then(response => {
+      return response.json()
+    }, (error)=>{
+        dispatch(receiveUpdateSpotCover(error));
+    }).then(json => {
+        // 可以多次 dispatch！
+        // 这里，使用 API 请求结果来更新应用的 state。
+        dispatch(receiveUpdateSpotCover(json));
+    }, error =>{
+        dispatch(receiveUpdateSpotCover(error));
+    })  
+  }
+}
 
 export function fetchSpot () {
 
@@ -21,7 +89,7 @@ export function fetchSpotList () {
 
   return dispatch => {
     dispatch(requestFetchSpotList());
-    return fetch(`http://192.168.1.116:9000/spots?uuid=575395655d1453227afb2532&token=15ac4c76-d422-4f7a-8ae3-96c3109c90c6`).then(response => {
+    return fetch(BASE_URL+`spots`).then(response => {
       return response.json()
     }, (error)=>{
         dispatch(receiveSpotList(error));

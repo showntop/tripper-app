@@ -1,6 +1,7 @@
 'use strict';
 
 import { combineReducers } from 'redux';
+import httpstate from './httpstate';
 import config from './config';
 import user from './user';
 import spot from './spot';

@@ -12,6 +12,8 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import NavigationBar from 'react-native-navbar';
 
+import { createSpot } from '../actions/spot';
+
 export default class EditorToolBar extends React.Component {
   static propTypes = {
     name: React.PropTypes.string,
@@ -24,6 +26,12 @@ export default class EditorToolBar extends React.Component {
   navtoLast() {
     const {navigator} = this.props;
     navigator.pop();
+  }
+
+  saveSpot(){
+    debugger;
+    const {dispatch} = this.props;
+    dispatch(createSpot("a","b"));
   }
 
   render() {
@@ -41,7 +49,7 @@ export default class EditorToolBar extends React.Component {
                 </TouchableOpacity>
               } 
               rightButton={
-                <TouchableOpacity style={styles.toolItem} activeOpacity={0.1} onPress ={() => this.tabColor(1)}>
+                <TouchableOpacity style={styles.toolItem} activeOpacity={0.1} onPress ={ this.saveSpot.bind(this)}>
                     <Icon name='check' size={28} style={{color: 'white'}} />
                 </TouchableOpacity>
               }

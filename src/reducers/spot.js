@@ -18,6 +18,7 @@ function spot(state: State = initialState, action: Action) {
         });
 
       case types.RECEIVE_SPOT_LIST:
+        debugger;
         return Object.assign({}, state, {
           isLoading: false,
           dataList: action.data.data,

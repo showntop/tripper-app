@@ -46,7 +46,7 @@ export default class SpotEditor extends React.Component {
       );
       this.watchID = navigator.geolocation.watchPosition((lastPosition) => {
         console.log("lastPosition:" + lastPosition)
-        dispatch(fetchLocation(lastPosition));
+        //dispatch(fetchLocation(lastPosition));
       });
     }
 
