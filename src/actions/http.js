@@ -9,7 +9,9 @@ function requestHttp() {
 function receiveHttp() {
   return {
     type: types.RECEIVE_HTTP,
-    status: 200
+    status: 200,
     message: "成功"
   }
 }
+
+export { requestHttp, receiveHttp };

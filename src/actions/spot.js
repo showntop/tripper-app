@@ -1,35 +1,33 @@
 'use strict';
 
- import {BASE_URL} from '../constants/Urls'
+import {BASE_URL} from '../constants/Urls'
 import * as types from '../constants/ActionTypes';
+import * as http from '../actions/http';
+import api from '../api';
 
 export function createSpot(title, description, cover, location) {
+          debugger;
 
-  return dispatch => {
-    dispatch(requestHttp());
-    
-    return fetch(BASE_URL+`spots`,{
-      method: "POST",
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      body: JSON.stringify({title: title, description: description}),
-    }).then(response => {
-      return response.json()
-    }, (error)=>{
-        dispatch(receiveSpotList(error));
-    }).then(json => {
-        // 可以多次 dispatch！
-        // 这里，使用 API 请求结果来更新应用的 state。
-        dispatch(receiveSpotList(json));
-    }, error =>{
-        dispatch(receiveSpotList(error));
-    })
-  }
+    return (dispatch) => {
+        dispatch(http.requestHttp());
+        debugger;
+        return api.spots.create('a', 'a').then((response) => {
+            dispatch({
+                type: types.RECEIVE_CREATE_SPOT,
+                response
+            });
+        }).catch(error => {
+            dispatch({
+                type: RECEIVE_CREATE_SPOT,
+                error
+            });
+        });
+    };  
 }
 
 export function requestupdateSpotCover() {
   return{
-    type: types.REQUEST_CREATE_SPOT_COVER,
+    type: types.REQUEST_UPDATE_SPOT_COVER,
     data:{
       isLoading: true,
       data: null
@@ -39,7 +37,7 @@ export function requestupdateSpotCover() {
 
 export function receiveUpdateSpotCover(data) {
   return{
-    type: types.REQUEST_CREATE_SPOT_COVER
+    type: types.REQUEST_UPDATE_SPOT_COVER,
     data:{
       data: data,
       isLoading: false

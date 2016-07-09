@@ -17,6 +17,7 @@ import AttachesEditor from '../components/AttachesEditor'
 import EditorNavBar from '../components/EditorNavBar'
 
 import {fetchLocation} from '../actions/spot';
+import { createSpot } from '../actions/spots';
 
 var ImagePickerManager = require('NativeModules').ImagePickerManager;
 
@@ -28,7 +29,9 @@ export default class SpotEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coverSource: null
+      coverSource: null,
+      title: null,
+      description: null,
     }
   }
 
@@ -120,10 +123,15 @@ export default class SpotEditor extends React.Component {
       });
     }
 
+  saveSpot(){
+    const {dispatch} = this.props;
+    dispatch(createSpot(this.state.title, this.state.description, "d", "e"));
+  }
+
   render() {
     return (
         <View style={{flex: 1}}>
-            <EditorNavBar {...this.props}/>
+            <EditorNavBar {...this.props} onRightPress={this.saveSpot.bind(this)}/>
             <View style={{ height: 200}} >
                 <Image
                   ref="spotCover"
@@ -133,10 +141,12 @@ export default class SpotEditor extends React.Component {
                 >
                     <View style={{paddingHorizontal: 10, height: 170}} >
                         <View style={{borderBottomColor: '#8B7E66', borderBottomWidth: 1, alignItems: 'flex-end', paddingBottom: 0}}>
-                            <TextInput style={{flex:1, height: 40, paddingBottom: 0}} placeholder="写个标题吧" underlineColorAndroid= "transparent"/>
+                            <TextInput ref="title" style={{flex:1, height: 40, paddingBottom: 0}} placeholder="写个标题吧" underlineColorAndroid= "transparent"
+                            value={this.state.title} onChangeText={title => this.setState({title})}/>
                         </View>
                         <View style={{}}>
-                            <TextInput style={{height: 120}} placeholder="您还可以写个简述" underlineColorAndroid= "transparent"/>
+                            <TextInput ref="description" style={{height: 120}} placeholder="您还可以写个简述" underlineColorAndroid= "transparent"
+                            value={this.state.description} onChangeText={description => this.setState({description})}/>
                         </View>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' ,backgroundColor: '#BEBEBE', borderRadius: 5, width: 150,height: 18, position: 'relative', bottom: 12}} >
                           <Icon name="location" style={{marginTop: 2}}/>
