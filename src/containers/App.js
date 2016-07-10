@@ -7,6 +7,7 @@ import {ToastShort} from '../utils/ToastUtils';
 
 import SplashContainer from '../containers/SplashContainer';
 import SpotContainer from '../containers/SpotContainer';
+import SpotLineContainer from '../containers/SpotLineContainer';
 import {NaviGoBack} from '../utils/CommonUtils';
 
 import {
@@ -63,7 +64,7 @@ class App extends React.Component {
           configureScene={this.configureScene}
           renderScene={this.renderScene}
           initialRoute={{
-            component: SpotContainer,
+            component: SpotLineContainer,
             name: 'Splash'
           }}
         />

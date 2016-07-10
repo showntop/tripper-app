@@ -26,7 +26,6 @@ export default class ApiClient {
         if (method !== 'get' && method !== 'head') {
             init.body = JSON.stringify(body);
         }
-        debugger;
         return fetch(`${urlWithQuery}`, init).then(res => {
             debugger;
             // if (res.status >= 400) {

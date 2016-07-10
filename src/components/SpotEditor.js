@@ -17,7 +17,7 @@ import AttachesEditor from '../components/AttachesEditor'
 import EditorNavBar from '../components/EditorNavBar'
 
 import {fetchLocation} from '../actions/spot';
-import { createSpot } from '../actions/spots';
+import { createSpot, updateSpotCover} from '../actions/spots';
 
 var ImagePickerManager = require('NativeModules').ImagePickerManager;
 
@@ -29,7 +29,7 @@ export default class SpotEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coverSource: null,
+      coverFile: null,
       title: null,
       description: null,
     }
@@ -109,15 +109,14 @@ export default class SpotEditor extends React.Component {
         }
         else {
           // You can display the image using either data:
-          const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
 
           // // uri (on iOS)
           // const source = {uri: response.uri.replace('file://', ''), isStatic: true};
           // // uri (on android)
           // const source = {uri: response.uri, isStatic: true};
-
+          debugger;
           this.setState({
-            coverSource: source
+            coverFile: response
           });
         }
       });
@@ -125,7 +124,8 @@ export default class SpotEditor extends React.Component {
 
   saveSpot(){
     const {dispatch} = this.props;
-    dispatch(createSpot(this.state.title, this.state.description, "d", "e"));
+    debugger;
+    dispatch(createSpot(this.state.title, this.state.description, '132,32',this.state.coverFile));
   }
 
   render() {
@@ -137,7 +137,7 @@ export default class SpotEditor extends React.Component {
                   ref="spotCover"
                   resizeMode="stretch"
                   style={{width: Dimensions.get('window').width, height: 200}}
-                  source={ this.state.coverSource || require('../images/default_cover.jpg')}
+                  source={this.state.coverFile == null ? require('../images/default_cover.jpg') : {uri: this.state.coverFile.uri.replace('file://', ''), isStatic: true}}
                 >
                     <View style={{paddingHorizontal: 10, height: 170}} >
                         <View style={{borderBottomColor: '#8B7E66', borderBottomWidth: 1, alignItems: 'flex-end', paddingBottom: 0}}>
@@ -158,17 +158,14 @@ export default class SpotEditor extends React.Component {
                             <Icon name='user' size={25} style={{color: 'black'}} />
                             <Text style={{color: 'black'}} >亲人</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress ={() => this.selectTag(2)}  style={{flexDirection: 'row',  alignItems: 'center'}}>
-                          <Icon name='tag' size={25}  style={{color: 'black'}} />
-                        </TouchableOpacity>
                         <TouchableOpacity onPress ={() => this.selectCover(2)}  style={{flexDirection: 'row',  alignItems: 'center'}}>
                             <Icon name='image' size={25}  style={{color: 'black'}} />
                         </TouchableOpacity>
                     </View>
                 </Image>
-                </View>
+            </View>
             
-            <AttachesEditor {...this.props} style={{flex: 1, backgroundColor: 'white'}} />
+            {/*<AttachesEditor {...this.props} style={{flex: 1, backgroundColor: 'white'}} />*/}
         </View>
     );
   }

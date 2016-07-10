@@ -33,17 +33,17 @@ class SpotGrid extends Component {
 
     renderSpots(start, end) {
         // const aas = [1,22,2,2,3,2]
-        const {spot} = this.props;
+        const {navigator, spot} = this.props;
         const result = [];
-
+        
         const spotCards = spot.dataList.map((spot, index) => {
             var heights = [400, 380, 350, 300];
 
             let randomHeight = Math.floor(Math.random() * (4 - 0));
             let height = this.shuffle(heights)[randomHeight];
-
+            debugger;
           return (
-              <SpotCard key={index} style={{marginTop: 6, height: height}} />
+              <SpotCard key={index} style={{marginTop: 6, height: height}} navigator= {navigator}  spot={spot}/>
           );
         });
         return spotCards;
